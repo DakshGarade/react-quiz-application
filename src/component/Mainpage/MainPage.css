@@ -6,9 +6,6 @@
 
 }
 
-body {
-    background-color: white;
-}
 
 #timer {
 
@@ -54,12 +51,12 @@ body {
     color: #e3dd87;
     height: max-content;
     margin-left: 20%;
-    /* margin-top: 7.5%; */
     padding: 5px;
     font-size: 20px;
     text-overflow: ellipsis;
     overflow: hidden;
     font-family: sans-serif;
+    text-align: center;
 }
 
 #exitBtn {
@@ -183,17 +180,6 @@ button {
     border: white;
 }
 
-.incorrectAnswer {
-    color: white;
-    background-color: #fe6553;
-    border: #fe6553;
-}
-
-.correctAnswer {
-    color: white;
-    background-color: #3b9b5b;
-    border: 1px solid rgb(59, 155, 91);
-}
 
 #optList {
     list-style-type: none;
@@ -215,3 +201,20 @@ button {
     padding-left: 1%;
     padding-right: 1%;
 }
+
+.correctAnswer {
+    color: white;
+    background-color: #3b9b5b;
+    border: 1px solid rgb(59, 155, 91);
+  }
+  
+  .wrongAnswer {
+    color: white;
+    background-color: #fe6553;
+    border: #fe6553;
+  }
+  
+  .selectAnswer {
+    border: 2px solid #0ca2fd;
+  }
+

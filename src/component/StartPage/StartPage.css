@@ -7,9 +7,7 @@
     background-color: #0a5a5e;
 }
 
-body {
-    background-color: #0a5a5e;
-}
+
 
 #inpBar {
     border: none;
@@ -33,6 +31,7 @@ body {
     width: max-content;
     border-style: hidden;
     margin-top: 6%;
+    margin-left: 0;
 }
 
 .children {
