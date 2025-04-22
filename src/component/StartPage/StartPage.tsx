@@ -19,7 +19,7 @@ export default function StartPage() {
       <div className="children">
         <input
           type="text"
-          placeholder="Enter your full name..."
+          placeholder="Enter your full name....."
           id="inpBar"
           onChange={(e) => setInpName(e.target.value)}
         />
