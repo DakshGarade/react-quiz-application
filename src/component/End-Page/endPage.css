@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+ font-family: sans-serif;
+ box-sizing: border-box;
+}
+
+
+#parent{
+
+ background-color: #d9d9d9;
+}
+
+#header{
+    color: #fffaaa;
+    background-color: #015a5e;
+    padding: 20px;
+    font-size: 33px;
+    margin: 10px 10px 5px 10px;
+}
+
+#middleSection{
+    background-color: #d9d9d9;
+    
+}
+
+#footer{
+    padding: 30px;
+    margin: 10px 10px 5px 10px;
+    background-color: #015a5e;
+    margin-top: 2%
+}
+
+
+
+
+#endpage-heading-con{
+    width: 50%;
+}
+
+body{
+    background-color: #d9d9d9;
+    border: 1px solid #ccc;
+    background-color: #d9d9d9;
+    margin: 3%;
+    margin-top: 1%;
+}
+
+#scoreBoard{
+    background-color: #fff;
+    margin-left: 24%;
+    margin-right: 36%;
+    margin-top: 3%;
+    width: 48%;
+    padding: 3%;
+    padding-top: 17%;
+    padding-bottom: 1%;
+}
+
+#x{
+    color: #fe6553;
+    font-size: 22px;
+}
+
+#scoreFooter{
+    background-color: #015a5e;
+    color: #fff;
+    margin-left: 24%;
+    margin-right: 28%;
+    padding: 0.8%;
+    
+    text-align: center;
+    font-size: 22px;
+}
+
+#date-con{
+    float: right;
+    margin-left: 72%;
+    margin-top: -34%;
+    
+    font-size: 20px;
+}
+
+#dearName{
+    margin-top: -30%;
+    
+    text-align: center;
+    padding-bottom: 5%;
+    font-size: 24px;
+
+}
+
+#congratulation{
+    font-size: 40px;
+    color: green;
+    text-align: center;
+}
+
+#sorry{
+    text-align: center;
+    font-size: 40px;
+    color: #f00;
+    margin-top: -2.5%;
+    padding-top: 1%;
+}
+
+#trophy{
+    text-align: center;
+    font-size: 90px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#sadFace{
+    font-size: 90px;
+    text-align: center;
+}
+
+#scoreIs{
+    text-align: center;
+    font-size: 22px;
+    padding-top: 25px;
+}
+
+#whyPassOrFail{
+    text-align: center;
+    margin-top: 2%;
+    font-size: 22px;
+}
+
+#whyFailed{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 4%;
+}

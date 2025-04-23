@@ -1,7 +1,20 @@
 import "./MainPage.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MainPage() {
+
+  const navigate = useNavigate(); // Hook for navigation
+
+  useEffect(() => {
+    let nameFromStorage = sessionStorage.getItem("name");
+
+    if (nameFromStorage) {
+      setUserName(nameFromStorage.toUpperCase());
+    } else {
+      setUserName("Guest");
+    }
+  }, []);
   var questionsInfo = [
     {
       questionNo: 1,
@@ -95,30 +108,10 @@ export default function MainPage() {
       marginLeft: "8%",
       marginBottom: "47px",
     });
-    const [classIs,setClassIs] = useState( answerStatus
-        ? answerStatus.correctOption ==="option1"
-          ? "correctAnswer"
-          : answerStatus.selectedOption === "opt1"
-          ? "wrongAnswer"
-          : ""
-        : selectedOption === "opt1"
-        ? "selectAnswer"
-        :""
-     );
-
   const [seconds, setSeconds] = useState(0);
 
   const [userName, setUserName] = useState("");
 
-  useEffect(() => {
-    let nameFromStorage = sessionStorage.getItem("name");
-
-    if (nameFromStorage) {
-      setUserName(nameFromStorage.toUpperCase());
-    } else {
-      setUserName("Guest");
-    }
-  }, []);
 
   function submitYourAnswer() {
     setIsShowingSubmitButton("none");
@@ -148,12 +141,28 @@ export default function MainPage() {
       console.log(selectedValue);
   }
 
+    
+  function getClassForOption(optionKey:string) {
+    if (!answerStatus) {
+      return selectedOption === optionKey ? "selectAnswer" : "";
+    }
+    if (answerStatus.correctOption === optionKey) {
+      return "correctAnswer";
+    }
+    if (answerStatus.selectedOption === optionKey && answerStatus.correctOption !== optionKey) {
+      return "wrongAnswer";
+    }
+    return "";
+  }
+
   function continueToNextQuestion() {  
     if (num !< questionsInfo.length - 1) {
     setIsShowingSubmitButton("inline");
     setIsShowingContinueButton("none");
     setIsDisabled(true)
     setNum((prev) => prev + 1);
+    setAnswerStatus(null);
+    setSelectedOption("")
     setBtnStyle({
          fontSize: "20px",
         fontFamily: "Arial",
@@ -168,21 +177,16 @@ export default function MainPage() {
         marginLeft: "8%",
         marginBottom: "47px",
     })
+    getClassForOption("")
     
 }
-//   else {
-//   }
+  else {
+    navigate("/endPage"); // Navigate to mainPage route
+  }
   }
 
   function midInfo() {
    
-  
-    let question = questionsInfo[num].question;
-    let opt1 = questionsInfo[num].option1;
-    let opt2 = questionsInfo[num].option2;
-    let opt3 = questionsInfo[num].option3;
-    let opt4 = questionsInfo[num].option4;
-
     useEffect(() => {
       const timer = setInterval(() => {
         setSeconds((prev) => prev + 1);
@@ -190,6 +194,13 @@ export default function MainPage() {
 
       return () => clearInterval(timer);
     }, []);
+
+  
+    let question = questionsInfo[num].question;
+    let opt1 = questionsInfo[num].option1;
+    let opt2 = questionsInfo[num].option2;
+    let opt3 = questionsInfo[num].option3;
+    let opt4 = questionsInfo[num].option4;
 
     // Format seconds into hh:mm:ss
     const formatTime = () => {
@@ -237,11 +248,11 @@ export default function MainPage() {
       });
     };
 
-  
-  
+
 
     return (
       <>
+    
         <div>
           <div id="mid-child1">
             <div id="questions-counter-con">
@@ -279,7 +290,7 @@ export default function MainPage() {
               <label
                 htmlFor="opt1"
                 id="l1"
-className={classIs}
+className={getClassForOption("opt1")}
               >
                 {opt1}
               </label>
@@ -298,7 +309,7 @@ className={classIs}
               <label
                 htmlFor="opt2"
                 id="l2"
-className={classIs}          >
+className={getClassForOption("opt2")}          >
                 {opt2}
               </label>
             </li>
@@ -316,7 +327,7 @@ className={classIs}          >
               <label
                 htmlFor="opt3"
                 id="l3"
-className={classIs}          >
+className={getClassForOption("opt3")}          >
                 {opt3}
               </label>
             </li>
@@ -334,7 +345,7 @@ className={classIs}          >
               <label
                 htmlFor="opt4"
                 id="l4"
-className={classIs}          >
+className={getClassForOption("opt4")}          >
                 {opt4}
               </label>
             </li>
