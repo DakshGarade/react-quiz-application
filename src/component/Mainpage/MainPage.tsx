@@ -181,7 +181,10 @@ export default function MainPage() {
     
 }
   else {
-    navigate("/endPage"); // Navigate to mainPage route
+    navigate("/endPage"); // Navigate to mainPage 
+    useEffect(() => {
+      let ss = sessionStorage.setItem("correctCount", correctCount.toString());
+    }, []);
   }
   }
 
