@@ -4,6 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 export default function MainPage() {
 
+  useEffect(() => {
+    document.body.style.backgroundColor = 'white'; // Example: dark bg
+
+    return () => {
+      // Cleanup to reset when leaving this page
+      document.body.style.backgroundColor = '';
+      document.body.style.color = '';
+    };
+  }, []);
+
+
   const navigate = useNavigate(); // Hook for navigation
 
   useEffect(() => {
@@ -111,36 +122,38 @@ export default function MainPage() {
   const [seconds, setSeconds] = useState(0);
 
   const [userName, setUserName] = useState("");
+  useEffect(() => {
+    sessionStorage.setItem("correctCount", correctCount.toString());
+  }, [correctCount]);
+  
 
 
   function submitYourAnswer() {
+   
     setIsShowingSubmitButton("none");
     setIsShowingContinueButton("inline");
-
-    
+  
     const currentQuestion = questionsInfo[num];
     const actualOptionKey = selectedOption.replace("opt", "option"); // "opt1" → "option1"
     const selectedValue = currentQuestion[actualOptionKey as keyof typeof currentQuestion];
-      // opt1 -> currentQuestion.option1, etc.
   
     const isCorrect = selectedValue === currentQuestion.ans;
     if (isCorrect) {
       setCorrectCount((prev) => prev + 1);
-        }
-    console.log(selectedValue);
+    }
+  
     const correctKey = Object.keys(currentQuestion).find(
-        (key) =>
-          key.startsWith("option") &&
-          currentQuestion[key as keyof typeof currentQuestion] === currentQuestion.ans
-      );
-      
-      setAnswerStatus({
-        correctOption: correctKey ?? "", // fallback to empty string if not found
-        selectedOption,
-      });
-      console.log(selectedValue);
+      (key) =>
+        key.startsWith("option") &&
+        currentQuestion[key as keyof typeof currentQuestion] === currentQuestion.ans
+    );
+  
+    setAnswerStatus({
+      correctOption: correctKey?.replace("option", "opt") ?? "", // now it's "opt2" etc.
+      selectedOption,
+    });
   }
-
+  
     
   function getClassForOption(optionKey:string) {
     if (!answerStatus) {
@@ -181,10 +194,9 @@ export default function MainPage() {
     
 }
   else {
-    navigate("/endPage"); // Navigate to mainPage 
-    useEffect(() => {
-      let ss = sessionStorage.setItem("correctCount", correctCount.toString());
-    }, []);
+    
+    navigate("/endPage"); // Navigate to endPage 
+    
   }
   }
 

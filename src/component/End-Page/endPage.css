@@ -12,11 +12,11 @@
  background-color: #d9d9d9;
 }
 
-#header{
+#endpage-header{
     color: #fffaaa;
     background-color: #015a5e;
     padding: 20px;
-    font-size: 33px;
+    font-size: 33px;    
     margin: 10px 10px 5px 10px;
 }
 
@@ -25,7 +25,7 @@
     
 }
 
-#footer{
+#endpage-footer{
     padding: 30px;
     margin: 10px 10px 5px 10px;
     background-color: #015a5e;
@@ -39,13 +39,6 @@
     width: 50%;
 }
 
-body{
-    background-color: #d9d9d9;
-    border: 1px solid #ccc;
-    background-color: #d9d9d9;
-    margin: 3%;
-    margin-top: 1%;
-}
 
 #scoreBoard{
     background-color: #fff;

@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StartPage.css";
 
 export default function StartPage() {
+  useEffect(() => {
+      document.body.style.backgroundColor = '#015a5e'; // Example: dark bg
+  
+      return () => {
+        // Cleanup to reset when leaving this page
+        document.body.style.backgroundColor = '';
+        document.body.style.color = '';
+      };
+    }, []);
+
   const [inpName, setInpName] = useState("");
   const navigate = useNavigate(); // Hook for navigation
 
